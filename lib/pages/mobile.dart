@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portifolio/pages/hello_page.dart';
-import 'package:portifolio/menu.dart';
 import 'package:portifolio/pages/about_page.dart';
 import 'package:portifolio/pages/contact_page.dart';
 
@@ -38,7 +37,7 @@ class _MobilePageState extends State<MobilePage> {
           centerTitle: true,
           title: const Text('Mobile'),
           ),
-      drawer: const Menu(),
+      // drawer: const Menu(),
       body: Container(
           height: correntHeight - 58,
           color: Colors.red,

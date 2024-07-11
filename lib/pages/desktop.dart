@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portifolio/pages/hello_page.dart';
-import 'package:portifolio/menu.dart';
 import 'package:portifolio/pages/about_page.dart';
 import 'package:portifolio/pages/contact_page.dart';
+import 'package:portifolio/pages/projects_page.dart';
 
 class DesktopPage extends StatefulWidget {
   const DesktopPage({super.key});
@@ -15,13 +15,13 @@ class _DesktopPageState extends State<DesktopPage> {
   int indexPage = 0;
   late PageController pc;
   @override
+
   void initState() {
     super.initState();
     pc = PageController(initialPage: indexPage);
   }
 
   setPageIndex(page) {
-    // print(indexPage);
     setState(() {
       indexPage = page;
     });
@@ -34,33 +34,16 @@ class _DesktopPageState extends State<DesktopPage> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-          centerTitle: true,
-          title: const Text('Desktop'),
-          ),
-      drawer: const Menu(),
-      body: Container(
-          height: correntHeight - 58,
-          color: Colors.red,
-          child: PageView(
-            scrollDirection: Axis.vertical,
-            controller: pc,
-            onPageChanged: (value) {
-              setPageIndex(value);
-            },
-            children: const [
-              HelloPage(mobile: false,),
-              ContactPage(),
-              AboutPage(),
-              ContactPage(),
-            ],
-          ),
-        ),
-      bottomNavigationBar: BottomNavigationBar(
+      body: Column(
+        children: [
+          BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           showUnselectedLabels: true,
+          selectedFontSize: 24,
+          unselectedFontSize: 18,
           showSelectedLabels: true,
-          elevation: 8,
+          iconSize: 1,
+          elevation: 12,
           landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
           // backgroundColor: Styles.secondary,
           // selectedItemColor: Styles.primary,
@@ -83,6 +66,27 @@ class _DesktopPageState extends State<DesktopPage> {
                 icon: Icon(Icons.wysiwyg), label: 'Contato'),
           ],
         ),
+          Container(
+              height: correntHeight - 59,
+              color: Colors.red,
+              child: PageView(
+                scrollDirection: Axis.vertical,
+                controller: pc,
+                onPageChanged: (value) {
+                  setPageIndex(value);
+                },
+                children: const [
+                  HelloPage(mobile: false),
+                  ContactPage(),
+                  ProjectsPage(mobile: false),
+                  AboutPage(),
+                  ContactPage(),
+                ],
+              ),
+            ),
+        ],
+      ),
+
     );
   }
 }
