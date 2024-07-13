@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portifolio/pages/hello_page.dart';
 import 'package:portifolio/pages/about_page.dart';
 import 'package:portifolio/pages/contact_page.dart';
+import 'package:portifolio/pages/projects_page.dart';
 
 class MobilePage extends StatefulWidget {
   const MobilePage({super.key});
@@ -53,14 +54,15 @@ class _MobilePageState extends State<MobilePage> {
             children: const [
               HelloPage(mobile: true,),
               ContactPage(),
+              ProjectsPage(mobile: true),
               AboutPage(),
-              ContactPage(),
             ],
           ),
         ),
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           showUnselectedLabels: true,
+          iconSize: 1,
           showSelectedLabels: true,
           elevation: 8,
           landscapeLayout: BottomNavigationBarLandscapeLayout.centered,

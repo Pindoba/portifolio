@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portifolio/assents.dart';
+import 'package:portifolio/widgets/text_widget.dart';
 
 class HelloPage extends StatelessWidget {
   final bool mobile;
@@ -13,25 +14,19 @@ class HelloPage extends StatelessWidget {
         const SizedBox(
           height: 120,
         ),
-        Text('Hello World',
-            style: TextStyle(fontSize: mobile == true ? 54 : 68)),
+        TextWidget(text: 'Hello World', size:  mobile == true ? 54 : 68,),
         SizedBox(height: sizeImg, width: sizeImg, child: Image.asset(Pictures.avatar)),
-        const Padding(
+         Padding(
           padding: EdgeInsets.only(right: 340),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'Olá, meu nome é',
-                style: TextStyle(fontSize: 26),
-              ),
+              TextWidget(text: 'Olá, meu nome é', size:  mobile == true ? 22 : 26,),
             ],
           ),
         ),
-        Text(
-          'Welton Moura',
-          style: TextStyle(fontSize: mobile == true ? 54 : 68),
-        ),
+        TextWidget(text: 'Welton Moura', size:  mobile == true ? 54 : 68,),
+ 
         Text('Dev backend - frontend')
       ],
     );

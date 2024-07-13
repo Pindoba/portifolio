@@ -67,7 +67,7 @@ class _DesktopPageState extends State<DesktopPage> {
           ],
         ),
           Container(
-              height: correntHeight - 59,
+              height: correntHeight - 60,
               color: Colors.red,
               child: PageView(
                 scrollDirection: Axis.vertical,
@@ -80,7 +80,6 @@ class _DesktopPageState extends State<DesktopPage> {
                   ContactPage(),
                   ProjectsPage(mobile: false),
                   AboutPage(),
-                  ContactPage(),
                 ],
               ),
             ),
