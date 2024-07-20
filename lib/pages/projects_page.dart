@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portifolio/repository/project_repository.dart';
 import 'package:portifolio/widgets/project_widget.dart';
 
@@ -11,17 +12,24 @@ class ProjectsPage extends StatefulWidget {
 }
 
 class _ProjectsPageState extends State<ProjectsPage> {
-    int _indice = 0;
-    void _incrementIndice() {
-      setState(() {
-        _indice++;
-      });
-    }
-    void _decrementIndice() {
-      setState(() {
-        _indice--;
-      });
-    }
+
+  int pageIndex = 0;
+  late PageController pc;
+  @override
+  void initState() {
+    super.initState();
+    pc = PageController(initialPage: pageIndex);
+  }
+
+  setPageIndex(page) {
+    setState(() {
+      pageIndex = page;
+      pc.animateToPage(pageIndex,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInCubic);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final correntWidth = MediaQuery.of(context).size.width;
@@ -31,65 +39,100 @@ class _ProjectsPageState extends State<ProjectsPage> {
       color: Colors.brown,
       child: Center(
         child: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-              color: Colors.green,
-            ),
-            height: widget.mobile == false
-                ? (correntWidth * 80) / 100
-                : (correntWidth * 100) / 100,
-            width: widget.mobile == false
-                ? (correntWidth * 70) / 100
-                : (correntWidth * 95) / 100,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ProjectWidget(
-                  project: project[_indice],
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            color: Colors.green,
+          ),
+          height: widget.mobile == false
+              ? (correntWidth * 80) / 100
+              : (correntWidth * 100) / 100,
+          width: widget.mobile == false
+              ? (correntWidth * 70) / 100
+              : (correntWidth * 95) / 100,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(),
+              Container(
+                height: 600,
+                width: 900,
+                child: PageView(
+                  controller: pc,
+                  onPageChanged: (page) {
+                    setPageIndex(page);
+                  },
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    ProjectWidget(project: project[0]),
+                    ProjectWidget(project: project[1]),
+                    ProjectWidget(project: project[2]),
+                  ],
                 ),
-                SizedBox(height: 50,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _indice != 0 
-                      ? 
-                      IconButton(
+              ),
+              SizedBox(
+                height: 80,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    pageIndex != 0
+                        ? IconButton(
                             onPressed: () {
                               setState(() {
-                                _decrementIndice();
+                                setPageIndex(pageIndex - 1);
+                       
                               });
                             },
-                            icon: Icon(Icons.navigate_before))
-                      :
-                             Icon(Icons.navigate_before),
-                      
-
-
-                      _indice == 0 ? Icon(Icons.circle,color: Colors.grey[600]) :  Icon(Icons.circle,size: 15,color: Colors.grey[800]),
-                      _indice == 1 ? Icon(Icons.circle,color: Colors.grey[600]) :  Icon(Icons.circle,size: 15,color: Colors.grey[800]),
-                      _indice == 2 ? Icon(Icons.circle,color: Colors.grey[600]) :  Icon(Icons.circle,size: 15,color: Colors.grey[800]),
+                            icon: const Icon(Icons.navigate_before))
+                        : const Icon(Icons.navigate_before),
+                    SizedBox(
+                      width: 400,
+                      child: BottomNavigationBar(
+                        type: BottomNavigationBarType.fixed,
+                        showUnselectedLabels: false,
+                        iconSize: 25,
+                        showSelectedLabels: false,
+                        backgroundColor: Colors.transparent,
+                        elevation: 0,
+                        landscapeLayout:
+                            BottomNavigationBarLandscapeLayout.centered,
+                        // backgroundColor: Styles.secondary,
+                        // selectedItemColor: Styles.primary,
+                        // unselectedItemColor: Styles.backgroud,
+                        currentIndex: pageIndex,
+                        onTap: (page) {
+                          setPageIndex(page);
                   
-                  
-                  
-                     
-                         _indice != project.length -1 
-                         ? 
-                          IconButton(
+                        },
+                        items: const [
+                          BottomNavigationBarItem(
+                              icon: Icon(Icons.circle), label: '.'),
+                          BottomNavigationBarItem(
+                              icon: SizedBox(child: Icon(Icons.circle)),
+                              label: '.'),
+                          BottomNavigationBarItem(
+                              icon: Icon(Icons.circle), label: '.'),
+                          BottomNavigationBarItem(
+                              icon: Icon(Icons.circle), label: '.'),
+                        ],
+                      ),
+                    ),
+                    pageIndex < 2
+                        ? IconButton(
                             onPressed: () {
                               setState(() {
-                                _incrementIndice();
+                                setPageIndex(pageIndex + 1);
+                               
                               });
                             },
-                            icon: Icon(Icons.navigate_next))
-                          :
-                            Icon(Icons.navigate_next),
-                     
-                    ],
-                  ),
-                )
-              ],
-            )),
+                            icon: const Icon(Icons.navigate_next))
+                        : const Icon(Icons.navigate_next),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

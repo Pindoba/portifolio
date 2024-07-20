@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portifolio/model/project.dart';
 import 'package:portifolio/widgets/text_widget.dart';
 
@@ -21,7 +22,9 @@ class ProjectWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextWidget(text: project.titulo, size: 28),
-                Image.network(project.midias[0]),
+                Image.network(project.midias[0])
+                .animate()
+                .fadeIn(delay: 500.ms),
 
                 // TextWidget(text: project.midias[0]),
                 TextWidget(text: 'Animação para ornar'),
