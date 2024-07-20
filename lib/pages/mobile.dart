@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portifolio/assents.dart';
 import 'package:portifolio/pages/hello_page.dart';
 import 'package:portifolio/pages/about_page.dart';
 import 'package:portifolio/pages/contact_page.dart';
@@ -34,14 +35,14 @@ class _MobilePageState extends State<MobilePage> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-          centerTitle: true,
-          title: const Text('Mobile'),
-          ),
+      // appBar: AppBar(
+      //     centerTitle: true,
+      //     title: const Text('Mobile'),
+      //     ),
       // drawer: const Menu(),
       body: Container(
           height: correntHeight - 58,
-          color: Colors.red,
+          color: Cores.grafite,
           child:
           
           
@@ -64,11 +65,11 @@ class _MobilePageState extends State<MobilePage> {
           showUnselectedLabels: true,
           iconSize: 1,
           showSelectedLabels: true,
-          elevation: 8,
+          elevation: 1,
           landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
-          // backgroundColor: Styles.secondary,
-          // selectedItemColor: Styles.primary,
-          // unselectedItemColor: Styles.backgroud,
+           backgroundColor: Cores.laranjaEscuro,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.black38,
           currentIndex: indexPage,
           onTap: (page) {
             pc.animateToPage(page,
@@ -78,7 +79,7 @@ class _MobilePageState extends State<MobilePage> {
           items: const [
             BottomNavigationBarItem(
                 icon: Icon( Icons.remove ),
-                label: 'Apresentação'),
+                label: 'Hello World'),
             BottomNavigationBarItem(
                 icon: SizedBox(child: Icon(Icons.remove)), label: 'Sobre eu'),
             BottomNavigationBarItem(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portifolio/assents.dart';
 import 'package:portifolio/pages/hello_page.dart';
 import 'package:portifolio/pages/about_page.dart';
 import 'package:portifolio/pages/contact_page.dart';
@@ -45,9 +46,9 @@ class _DesktopPageState extends State<DesktopPage> {
           iconSize: 1,
           elevation: 12,
           landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
-          // backgroundColor: Styles.secondary,
-          // selectedItemColor: Styles.primary,
-          // unselectedItemColor: Styles.backgroud,
+          backgroundColor: Cores.laranjaEscuro,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.black38,
           currentIndex: indexPage,
           onTap: (page) {
             pc.animateToPage(page,
@@ -57,7 +58,7 @@ class _DesktopPageState extends State<DesktopPage> {
           items: const [
             BottomNavigationBarItem(
                 icon: Icon( Icons.remove ),
-                label: 'Apresentação'),
+                label: 'Hello World'),
             BottomNavigationBarItem(
                 icon: SizedBox(child: Icon(Icons.remove)), label: 'Sobre eu'),
             BottomNavigationBarItem(
@@ -67,8 +68,9 @@ class _DesktopPageState extends State<DesktopPage> {
           ],
         ),
           Container(
+            
               height: correntHeight - 60,
-              color: Colors.red,
+              color: Cores.grafite,
               child: PageView(
                 scrollDirection: Axis.vertical,
                 controller: pc,

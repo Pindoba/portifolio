@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portifolio/assents.dart';
 // import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portifolio/repository/project_repository.dart';
 import 'package:portifolio/widgets/project_widget.dart';
@@ -24,113 +25,120 @@ class _ProjectsPageState extends State<ProjectsPage> {
   setPageIndex(page) {
     setState(() {
       pageIndex = page;
-      pc.animateToPage(pageIndex,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInCubic);
     });
+      pc.animateToPage(pageIndex,
+          duration: const Duration(milliseconds: 350),
+          curve: Curves.decelerate);
   }
 
   @override
   Widget build(BuildContext context) {
     final correntWidth = MediaQuery.of(context).size.width;
+    final correntHeidth = MediaQuery.of(context).size.height;
 
     return Container(
-      padding: const EdgeInsets.all(10),
-      color: Colors.brown,
+      // padding: const EdgeInsets.all(10),
+      // color: Cores.base,
       child: Center(
-        child: Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            color: Colors.green,
-          ),
-          height: widget.mobile == false
-              ? (correntWidth * 80) / 100
-              : (correntWidth * 100) / 100,
-          width: widget.mobile == false
-              ? (correntWidth * 70) / 100
-              : (correntWidth * 95) / 100,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(),
-              Container(
-                height: 600,
-                width: 900,
-                child: PageView(
-                  controller: pc,
-                  onPageChanged: (page) {
-                    setPageIndex(page);
-                  },
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    ProjectWidget(project: project[0]),
-                    ProjectWidget(project: project[1]),
-                    ProjectWidget(project: project[2]),
-                  ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: Cores.base,
+            ),
+            height: widget.mobile == false
+                ? (correntHeidth * 80) / 100
+                : (correntHeidth * 80) / 100,
+            width: widget.mobile == false
+                ? (correntWidth * 70) / 100
+                : (correntWidth * 95) / 100,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // SizedBox(),
+                Container(
+          
+                  height: (correntHeidth * 60) / 100,
+          
+          
+                  child: 
+                  PageView(
+                    controller: pc,
+                    onPageChanged: (page) {
+                      setPageIndex(page);
+                    },
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      ProjectWidget(project: project[0]),
+                      ProjectWidget(project: project[1]),
+                      ProjectWidget(project: project[2]),
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 80,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    pageIndex != 0
-                        ? IconButton(
-                            onPressed: () {
-                              setState(() {
-                                setPageIndex(pageIndex - 1);
-                       
-                              });
-                            },
-                            icon: const Icon(Icons.navigate_before))
-                        : const Icon(Icons.navigate_before),
-                    SizedBox(
-                      width: 400,
-                      child: BottomNavigationBar(
-                        type: BottomNavigationBarType.fixed,
-                        showUnselectedLabels: false,
-                        iconSize: 25,
-                        showSelectedLabels: false,
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        landscapeLayout:
-                            BottomNavigationBarLandscapeLayout.centered,
-                        // backgroundColor: Styles.secondary,
-                        // selectedItemColor: Styles.primary,
-                        // unselectedItemColor: Styles.backgroud,
-                        currentIndex: pageIndex,
-                        onTap: (page) {
-                          setPageIndex(page);
-                  
-                        },
-                        items: const [
-                          BottomNavigationBarItem(
-                              icon: Icon(Icons.circle), label: '.'),
-                          BottomNavigationBarItem(
-                              icon: SizedBox(child: Icon(Icons.circle)),
-                              label: '.'),
-                          BottomNavigationBarItem(
-                              icon: Icon(Icons.circle), label: '.'),
-                          BottomNavigationBarItem(
-                              icon: Icon(Icons.circle), label: '.'),
-                        ],
+                SizedBox(
+                  height: 80,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      pageIndex != 0
+                          ? IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  setPageIndex(pageIndex - 1);
+                                });
+                              },
+                              icon: const Icon(Icons.navigate_before))
+                          : const Icon(Icons.navigate_before),
+                      SizedBox(
+                        width: 300,
+                        child: BottomNavigationBar(
+                          type: BottomNavigationBarType.fixed,
+                          showUnselectedLabels: false,
+                          iconSize: 20,
+                          showSelectedLabels: false,
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                          landscapeLayout:
+                              BottomNavigationBarLandscapeLayout.centered,
+                          // backgroundColor: Styles.secondary,
+                          selectedItemColor: Cores.laranjaClaro,
+                          // unselectedItemColor: Styles.backgroud,
+                          currentIndex: pageIndex,
+                          onTap: (page) {
+                            setPageIndex(page);
+                            
+                    
+                          },
+                          items: const [
+                            BottomNavigationBarItem(
+                                icon: Icon(Icons.circle), label: '.'),
+                            BottomNavigationBarItem(
+                                icon: SizedBox(child: Icon(Icons.circle)),
+                                label: '.'),
+                            BottomNavigationBarItem(
+                                icon: Icon(Icons.circle), label: '.'),
+                            BottomNavigationBarItem(
+                                icon: Icon(Icons.circle), label: '.'),
+                          ],
+                        ),
                       ),
-                    ),
-                    pageIndex < 2
-                        ? IconButton(
-                            onPressed: () {
-                              setState(() {
-                                setPageIndex(pageIndex + 1);
-                               
-                              });
-                            },
-                            icon: const Icon(Icons.navigate_next))
-                        : const Icon(Icons.navigate_next),
-                  ],
-                ),
-              )
-            ],
+                      pageIndex < 2
+                          ? IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  setPageIndex(pageIndex + 1);
+                                 
+                                });
+                              },
+                              icon: const Icon(Icons.navigate_next))
+                          : const Icon(Icons.navigate_next),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
