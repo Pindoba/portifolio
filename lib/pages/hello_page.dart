@@ -19,7 +19,7 @@ class HelloPage extends StatelessWidget {
       child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
-              color: Cores.base,
+              color: Cores.laranjaClaro,
             ),
             height: mobile == false
                 ? (correntHeidth * 80) / 100
@@ -35,18 +35,18 @@ class HelloPage extends StatelessWidget {
           const SizedBox(
             height: 120,
           ),
-          TextWidget(text: 'Hello World', size:  mobile == true ? 54 : 68,),
-          SizedBox(height: sizeImg, width: sizeImg, child: Image.asset(Pictures.avatar)).animate().scaleXY(begin: 0, end: 1,delay: 450.ms),
+          TextWidget(color: Cores.grafite , text: 'Hello World', size:  mobile == true ? 54 : 68,).animate().scaleXY(begin: 0, end: 1,delay: 750.ms,duration: 400.ms),
+          SizedBox(height: sizeImg, width: sizeImg, child: Image.asset(Pictures.avatar)).animate().scaleXY(begin: 0, end: 1,delay: 850.ms,duration: 400.ms),
            Padding(
             padding: EdgeInsets.only(right: 340),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextWidget(text: 'Olá, meu nome é', size:  mobile == true ? 22 : 26,),
+                TextWidget(text: 'Olá, meu nome é', size:  mobile == true ? 22 : 26,).animate().scaleXY(begin: 0, end: 1,delay: 950.ms,duration: 400.ms),
               ],
             ),
           ),
-          TextWidget(text: 'Welton Moura', size:  mobile == true ? 54 : 68,),
+          TextWidget(color: Cores.base, text: 'Welton Moura', size:  mobile == true ? 54 : 68,).animate().scaleXY(begin: 0, end: 1,delay: 1000.ms,duration: 400.ms),
        
           Text('Dev backend - frontend')
           ],

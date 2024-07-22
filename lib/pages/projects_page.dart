@@ -43,9 +43,10 @@ class _ProjectsPageState extends State<ProjectsPage> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
+            
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
-              color: Cores.base,
+              color: Cores.laranjaClaro,
             ),
             height: widget.mobile == false
                 ? (correntHeidth * 80) / 100
@@ -57,9 +58,10 @@ class _ProjectsPageState extends State<ProjectsPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 // SizedBox(),
-                Container(
+                SizedBox(
           
-                  height: (correntHeidth * 60) / 100,
+                  height: (correntHeidth * 70) / 100,
+                 
           
           
                   child: 
@@ -89,22 +91,22 @@ class _ProjectsPageState extends State<ProjectsPage> {
                                   setPageIndex(pageIndex - 1);
                                 });
                               },
-                              icon: const Icon(Icons.navigate_before))
-                          : const Icon(Icons.navigate_before),
+                              icon:  Icon(Icons.navigate_before,size: 34,color: Cores.base,))
+                          :  Icon(Icons.navigate_before,size: 34,color: Cores.grafite),
                       SizedBox(
                         width: 300,
                         child: BottomNavigationBar(
                           type: BottomNavigationBarType.fixed,
                           showUnselectedLabels: false,
-                          iconSize: 20,
+                          iconSize: 15,
                           showSelectedLabels: false,
                           backgroundColor: Colors.transparent,
                           elevation: 0,
                           landscapeLayout:
                               BottomNavigationBarLandscapeLayout.centered,
                           // backgroundColor: Styles.secondary,
-                          selectedItemColor: Cores.laranjaClaro,
-                          // unselectedItemColor: Styles.backgroud,
+                          selectedItemColor: Cores.laranjaEscuro,
+                          unselectedItemColor: Cores.base,
                           currentIndex: pageIndex,
                           onTap: (page) {
                             setPageIndex(page);
@@ -119,8 +121,8 @@ class _ProjectsPageState extends State<ProjectsPage> {
                                 label: '.'),
                             BottomNavigationBarItem(
                                 icon: Icon(Icons.circle), label: '.'),
-                            BottomNavigationBarItem(
-                                icon: Icon(Icons.circle), label: '.'),
+                            // BottomNavigationBarItem(
+                            //     icon: Icon(Icons.circle), label: '.'),
                           ],
                         ),
                       ),
@@ -132,8 +134,8 @@ class _ProjectsPageState extends State<ProjectsPage> {
                                  
                                 });
                               },
-                              icon: const Icon(Icons.navigate_next))
-                          : const Icon(Icons.navigate_next),
+                              icon:  Icon(Icons.navigate_next,size: 34,color: Cores.base))
+                          :  Icon(Icons.navigate_next,size: 34,color: Cores.grafite),
                     ],
                   ),
                 )

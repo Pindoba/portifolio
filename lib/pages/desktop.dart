@@ -48,7 +48,7 @@ class _DesktopPageState extends State<DesktopPage> {
           landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
           backgroundColor: Cores.laranjaEscuro,
           selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.black38,
+          unselectedItemColor: Cores.grafite,
           currentIndex: indexPage,
           onTap: (page) {
             pc.animateToPage(page,
@@ -69,7 +69,7 @@ class _DesktopPageState extends State<DesktopPage> {
         ),
           Container(
             
-              height: correntHeight - 60,
+              height: correntHeight - 59,
               color: Cores.grafite,
               child: PageView(
                 scrollDirection: Axis.vertical,
@@ -79,9 +79,9 @@ class _DesktopPageState extends State<DesktopPage> {
                 },
                 children: const [
                   HelloPage(mobile: false),
-                  ContactPage(),
+                  ContactPage(mobile: false),
                   ProjectsPage(mobile: false),
-                  AboutPage(),
+                  AboutPage(mobile: false),
                 ],
               ),
             ),

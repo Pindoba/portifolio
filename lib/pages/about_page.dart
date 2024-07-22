@@ -3,22 +3,31 @@ import 'package:lottie/lottie.dart';
 import 'package:portifolio/assents.dart';
 
 class AboutPage extends StatelessWidget {
-  const AboutPage({super.key});
+  final bool mobile;
+  const AboutPage({super.key, required this.mobile});
 
   @override
   Widget build(BuildContext context) {
-    final correntWidth = MediaQuery.of(context).size.width;
+    // final correntWidth = MediaQuery.of(context).size.width;
     return Container(
-      padding: EdgeInsets.all(50),
+      padding: const EdgeInsets.all(50),
       // color: Cores.base,
-      child: Center(child:  Column(children: [
-        Container(
-          height: 500,
-          child: LottieBuilder.asset(Pictures.work),
-        ),
-          Text('Em desenvolvimento...',
-          style: TextStyle(fontSize: 28,color: Colors.white),),
-      ],)),
+      child: Center(
+          child: Column(
+        children: [
+          mobile == false ?
+           SizedBox(
+            height: 500,
+            child: LottieBuilder.asset(Pictures.work),
+          )
+          :
+          const SizedBox(),
+          const Text(
+            'Em desenvolvimento...',
+            style: TextStyle(fontSize: 28, color: Colors.white),
+          ),
+        ],
+      )),
     );
   }
 }

@@ -17,7 +17,13 @@ class ProjectWidget extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.all(8),
-            width: (correntWidth * 35) / 100,
+
+            width: correntWidth > 700 
+            ?
+            (correntWidth * 35) / 100
+            :
+            (correntWidth * 95) / 100,
+
             child: Column(
               
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -25,19 +31,46 @@ class ProjectWidget extends StatelessWidget {
                 TextWidget(text: project.titulo, size: 28)
                 .animate()
                 .fadeIn(delay: 600.ms),
-                Image.network(project.midias[0])
-                .animate()
-                .scaleXY(
-                  begin: 0,
-                  end: 1,
-                  duration: 300.ms,
-                  delay: 350.ms)
+                SizedBox(height: 300,
+                  child: Image.network(project.midias[0])
+                  .animate()
+                  .scaleXY(
+                    begin: 0,
+                    end: 1,
+                    duration: 300.ms,
+                    delay: 350.ms),
+                )
 
                 // TextWidget(text: project.midias[0]),
-                ,TextWidget(text: 'Animação para ornar'),
+                ,
+                correntWidth > 700 ?
+                TextWidget(text: 'Animação para ornar')
+                :
+                Container(
+            padding: EdgeInsets.all(8),
+            width: (correntWidth * 90) / 100,
+            child: Text(
+                          project.descricao,
+                          softWrap: true,
+                          maxLines: 10,
+                          style: const TextStyle(
+            color:  Colors.black,
+            fontSize:  18,
+            overflow: TextOverflow.clip,
+            
+                          ),
+                          textAlign: TextAlign.left,
+                          
+                          )
+                          .animate()
+            .fadeIn(delay: 700.ms),
+          )
+                ,
               ],
             ),
           ),
+          correntWidth > 700
+          ?
           Container(
             padding: EdgeInsets.all(8),
             width: (correntWidth * 35) / 100,
@@ -67,6 +100,8 @@ class ProjectWidget extends StatelessWidget {
                 ],
             ),
           )
+          :
+          SizedBox()
         ],
       ),
     );

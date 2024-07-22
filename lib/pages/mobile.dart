@@ -41,7 +41,7 @@ class _MobilePageState extends State<MobilePage> {
       //     ),
       // drawer: const Menu(),
       body: Container(
-          height: correntHeight - 58,
+          height: correntHeight - 56,
           color: Cores.grafite,
           child:
           
@@ -54,9 +54,9 @@ class _MobilePageState extends State<MobilePage> {
             },
             children: const [
               HelloPage(mobile: true,),
-              ContactPage(),
+              ContactPage(mobile: true),
               ProjectsPage(mobile: true),
-              AboutPage(),
+              AboutPage(mobile: true),
             ],
           ),
         ),
@@ -64,12 +64,14 @@ class _MobilePageState extends State<MobilePage> {
           type: BottomNavigationBarType.fixed,
           showUnselectedLabels: true,
           iconSize: 1,
+          unselectedFontSize: 18,
+          selectedFontSize: 20,
           showSelectedLabels: true,
           elevation: 1,
           landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
            backgroundColor: Cores.laranjaEscuro,
           selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.black38,
+          unselectedItemColor: Cores.grafite,
           currentIndex: indexPage,
           onTap: (page) {
             pc.animateToPage(page,
