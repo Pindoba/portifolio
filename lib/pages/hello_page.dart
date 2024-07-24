@@ -12,13 +12,11 @@ class HelloPage extends StatelessWidget {
     double sizeImg = mobile == true ? 250 : 300;
         final correntWidth = MediaQuery.of(context).size.width;
         final correntHeidth = MediaQuery.of(context).size.height;
-
     return 
-    
     Center(
       child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
               color: Cores.laranjaClaro,
             ),
             height: mobile == false
@@ -28,27 +26,25 @@ class HelloPage extends StatelessWidget {
                 ? (correntWidth * 60) / 100
                 : (correntWidth * 95) / 100,
             child:
-
-      
       Column(
         children: [
-          const SizedBox(
-            height: 120,
+           SizedBox(
+            height: mobile == false ? 90 : 30,
           ),
-          TextWidget(color: Cores.grafite , text: 'Hello World', size:  mobile == true ? 54 : 68,).animate().scaleXY(begin: 0, end: 1,delay: 750.ms,duration: 400.ms),
-          SizedBox(height: sizeImg, width: sizeImg, child: Image.asset(Pictures.avatar)).animate().scaleXY(begin: 0, end: 1,delay: 850.ms,duration: 400.ms),
+          TextWidget(color: Cores.grafite , text: 'Hello World', size:  mobile == true ? 50 : 64,).animate().scaleXY(begin: 0, end: 1,delay: 1050.ms,duration: 400.ms),
+          SizedBox(height: sizeImg, width: sizeImg, child: Image.asset(Pictures.avatar)).animate().scaleXY(begin: 0, end: 1.5,delay: 950.ms,duration: 400.ms).scaleXY(begin: 1.3, end: 0.5,delay: 1450.ms,duration: 400.ms),
            Padding(
-            padding: EdgeInsets.only(right: 340),
+            padding: EdgeInsets.only(right: mobile == false ? 340 : 150),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextWidget(text: 'Olá, meu nome é', size:  mobile == true ? 22 : 26,).animate().scaleXY(begin: 0, end: 1,delay: 950.ms,duration: 400.ms),
+                TextWidget(text: 'Olá, meu nome é', size:  mobile == true ? 22 : 26,).animate().scaleXY(begin: 0, end: 1,delay: 1050.ms,duration: 400.ms),
               ],
             ),
           ),
-          TextWidget(color: Cores.base, text: 'Welton Moura', size:  mobile == true ? 54 : 68,).animate().scaleXY(begin: 0, end: 1,delay: 1000.ms,duration: 400.ms),
+          TextWidget(color: Cores.base, text: 'Welton Moura', size:  mobile == true ? 50 : 64,).animate().scaleXY(begin: 0, end: 1,delay: 1050.ms,duration: 400.ms),
        
-          Text('Dev backend - frontend')
+          const Text('Dev backend - frontend')
           ],
         ),
       )

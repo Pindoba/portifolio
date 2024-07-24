@@ -20,9 +20,7 @@ class _MobilePageState extends State<MobilePage> {
     super.initState();
     pc = PageController(initialPage: indexPage);
   }
-
   setPageIndex(page) {
-    // print(indexPage);
     setState(() {
       indexPage = page;
     });
@@ -44,8 +42,6 @@ class _MobilePageState extends State<MobilePage> {
           height: correntHeight - 56,
           color: Cores.grafite,
           child:
-          
-          
            PageView(
             scrollDirection: Axis.vertical,
             controller: pc,
@@ -64,8 +60,8 @@ class _MobilePageState extends State<MobilePage> {
           type: BottomNavigationBarType.fixed,
           showUnselectedLabels: true,
           iconSize: 1,
-          unselectedFontSize: 18,
-          selectedFontSize: 20,
+          unselectedFontSize: 16,
+          selectedFontSize: 18,
           showSelectedLabels: true,
           elevation: 1,
           landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
@@ -81,7 +77,7 @@ class _MobilePageState extends State<MobilePage> {
           items: const [
             BottomNavigationBarItem(
                 icon: Icon( Icons.remove ),
-                label: 'Hello World'),
+                label: 'Hello\n World'),
             BottomNavigationBarItem(
                 icon: SizedBox(child: Icon(Icons.remove)), label: 'Sobre eu'),
             BottomNavigationBarItem(
